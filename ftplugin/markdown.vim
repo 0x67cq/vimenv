@@ -1,0 +1,1 @@
+echom "ftplguin markdown"
