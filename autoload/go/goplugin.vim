@@ -40,8 +40,8 @@ function! go#goplugin#LoadGoPlugin()
         finish
     endif
     let g:golang_loaded = 1
+    call ccplugin#LoadCodeCommonPlugin()
 
-    echom "loading go#goplugin#LoadGoPlugin"
     nnoremap <Leader>hi :call SetGolangHeader() <cr>
     nnoremap <Leader>hu :call UpdateGolangHeader() <cr>
     " =================vim-go====================

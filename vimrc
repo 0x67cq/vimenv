@@ -1,103 +1,17 @@
+" TOC
+" ===================== customize-vim-opt =====================
+"
+" ===================== set keymapping =====================
+"
+" ===================== customize-common-package =====================
+"
+" ===================== load-common-package =====================
+
 " 关闭vi兼容
 set nocompatible
 " 开启文件类型检查与文件类型插件
 filetype on
 filetype plugin indent on
-
-" ===================== customize-common-package =====================
-
-" =====Airline=====
-" 设置airline主题
-" let g:airline_theme="minimalist"
-let g:airline_theme="base16"
-set noshowmode    "Hide the default mode text (e.g. -- INSERT -- below the statusline)
-let g:airline_powerline_fonts = 1
-" 打开tabline功能
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#enabled=1
-
-" 标签页只显示文件名
-let g:airline#extensions#tabline#fnamemod = ':t'
-" 关闭状态显示空白符号计数
-let g:airline#extensions#whitespace#enabled = 0
-" 去除右上角buffer
-let g:airline#extensions#tabline#buffers_label = ''
-" 标签页快捷键
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#buffer_idx_format = {
-            \ '0': '0: ', '1': '1: ', '2': '2: ', '3': '3: ', '4': '4: ',
-            \ '5': '5: ', '6': '6: ', '7': '7: ', '8': '8: ', '9': '9: '
-            \}
-
-" =====FZF=====
-command! -bang -nargs=* Agc
-            \ call fzf#vim#ag(expand('<cword>'))
-command! -bang -nargs=* Ag
-            \ call fzf#vim#ag(<q-args>,
-            \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-            \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \                 <bang>0)
-
-" fzf搜索结果分屏展示
-let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'Comment'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'info':    ['fg', 'PreProc'],
-            \ 'border':  ['fg', 'Ignore'],
-            \ 'prompt':  ['fg', 'Conditional'],
-            \ 'pointer': ['fg', 'Exception'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'header':  ['fg', 'Comment'] }
-
-" =====EasyMotion=====
-" 关闭默认快捷键
-let g:EasyMotion_do_mapping = 0
-" 忽略大小写
-let g:EasyMotion_smartcase = 1
-" 跳转键
-let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
-
-" ===================== load-common-package =====================
-
-" 视觉效果 -> 中文文档 
-packadd vimcdoc " yianwillis/vimcdoc
-
-"set rtp+=/usr/local/powerline/powerline/bindings/vim
-" 位移效果 -> 模糊搜索 
-set rtp+=~/.fzf
-packadd fzf.vim
-
-" airline  
-packadd vim-airline        " vim-airline/vim-airline
-packadd vim-airline-themes " vim-airline/vim-airline-themes
-
-" 位移效果 -> 快速跳转到指定字母 
-packadd vim-easymotion " TODO 有升级内容，有空可以更新一下使用方式
-
-" 视觉效果 -> 主题配色
-packadd gruvbox
-
-" 视觉效果 -> 平滑滚动插件
-packadd vim-smooth-scroll
-
-" tpope/vim-fugitive
-packadd vim-fugitive
-
 
 
 " ===================== customize-vim-opt =====================
@@ -166,6 +80,7 @@ set ttyfast
 
 " 禁止折叠
 set nofoldenable
+set noshowmode    "Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " 显示tab跟空格
 set list
@@ -364,20 +279,114 @@ nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-" vim-go
-" 插件依赖初始化判断进行加载，而不是全量加载。由使用者来判断我觉得这个很有问题 
-" vim-go 插件必须加载之后自己判断文件类型。 TODO 改了它的源码,判断时机改一下 
-call go#goplugin#LoadGoPlugin()
 
+
+autocmd BufNewFile *.sh exec ":call AutoSetFileHead()"
 augroup FileIndent
     autocmd!
     autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType yaml set tabstop=2 shiftwidth=2 softtabstop=2
-
     autocmd BufRead *.css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd BufRead *.json setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
+" ===================== customize-common-package =====================
 
+" =====Airline=====
+" 设置airline主题
+" let g:airline_theme="minimalist"
+let g:airline_theme="base16"
+let g:airline_powerline_fonts = 1
+" 打开tabline功能
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+
+" 标签页只显示文件名
+let g:airline#extensions#tabline#fnamemod = ':t'
+" 关闭状态显示空白符号计数
+let g:airline#extensions#whitespace#enabled = 0
+" 去除右上角buffer
+let g:airline#extensions#tabline#buffers_label = ''
+" 标签页快捷键
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+            \ '0': '0: ', '1': '1: ', '2': '2: ', '3': '3: ', '4': '4: ',
+            \ '5': '5: ', '6': '6: ', '7': '7: ', '8': '8: ', '9': '9: '
+            \}
+
+" =====FZF=====
+command! -bang -nargs=* Agc
+            \ call fzf#vim#ag(expand('<cword>'))
+command! -bang -nargs=* Ag
+            \ call fzf#vim#ag(<q-args>,
+            \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+            \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \                 <bang>0)
+
+" fzf搜索结果分屏展示
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
+
+" =====EasyMotion=====
+" 关闭默认快捷键
+let g:EasyMotion_do_mapping = 0
+" 忽略大小写
+let g:EasyMotion_smartcase = 1
+" 跳转键
+let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
+
+
+
+" ===================== load-common-package =====================
+
+" 视觉效果 -> 中文文档 
+packadd vimcdoc " yianwillis/vimcdoc
+
+"set rtp+=/usr/local/powerline/powerline/bindings/vim
+" 位移效果 -> 模糊搜索 
+set rtp+=~/.fzf
+packadd fzf.vim
+
+" airline  
+packadd vim-airline        " vim-airline/vim-airline
+packadd vim-airline-themes " vim-airline/vim-airline-themes
+
+" 位移效果 -> 快速跳转到指定字母 
+packadd vim-easymotion " TODO 有升级内容，有空可以更新一下使用方式
+
+" 视觉效果 -> 主题配色
+packadd gruvbox
+
+" 视觉效果 -> 平滑滚动插件
+packadd vim-smooth-scroll
+
+" tpope/vim-fugitive
+packadd vim-fugitive
+
+
+" 文件相关类型插件全部加载进来 
+call go#goplugin#LoadGoPlugin()
