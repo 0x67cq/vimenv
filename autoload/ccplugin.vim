@@ -3,7 +3,6 @@ function! ccplugin#LoadCodeCommonPlugin()
         return 
     endif
     let g:code_common_loaded = 1
-    "echom "loading ccplugin#LoadCodeCommonPlugin"
      
     " 开启彩虹括号
     let g:rainbow_active = 1
@@ -18,8 +17,6 @@ function! ccplugin#LoadCodeCommonPlugin()
 
     " =====YCM=====
 
-    "let g:ycm_min_num_of_chars_for_completion=1
-    "let g:ycm_min_num_identifier_candidate_chars=0
     let g:ycm_complete_in_comments=1
     let g:ycm_complete_in_strings=0
     "let g:ycm_collect_identifiers_from_comments_and_strings=1
@@ -27,7 +24,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     " 语法关键字补全
     let g:ycm_seed_identifiers_with_syntax = 1
     " 每次不同的vimrc之间更换需要手动指定
-    let g:ycm_global_ycm_extra_conf ="/Users/guancq/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+    let g:ycm_global_ycm_extra_conf ="/Users/guanchengqi/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
     
     " 关闭c语法检查
     let g:ycm_show_diagnostics_ui = 0
@@ -46,8 +43,8 @@ function! ccplugin#LoadCodeCommonPlugin()
     "
     "ycm 智能提醒触发补全
     let g:ycm_semantic_triggers =  {
-                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-                \ 'cs,lua,javascript': ['re!\w{1}'],
+                \ 'c,python,go,perl': ['re!\w{2}'],
+                \ 'lua,javascript': ['re!\w{1}'],
                 \ }
     " 函数跳转
     nnoremap <leader>y :YcmCompleter GoTo<CR>
