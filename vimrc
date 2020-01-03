@@ -300,6 +300,8 @@ augroup END
 let g:airline_theme="base16"
 let g:airline_powerline_fonts = 1
 " 打开tabline功能
+    "  是否airline显示
+let g:airline#extensions#ale#enabled=0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
@@ -387,6 +389,4 @@ packadd vim-smooth-scroll
 " tpope/vim-fugitive
 packadd vim-fugitive
 
-
-" 文件相关类型插件全部加载进来 
-call go#goplugin#LoadGoPlugin()
+call ccplugin#LoadCodeCommonPlugin()

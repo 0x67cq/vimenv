@@ -3,7 +3,7 @@ function! ccplugin#LoadCodeCommonPlugin()
         return 
     endif
     let g:code_common_loaded = 1
-    echom "loading ccplugin#LoadCodeCommonPlugin"
+    "echom "loading ccplugin#LoadCodeCommonPlugin"
      
     " 开启彩虹括号
     let g:rainbow_active = 1
@@ -16,49 +16,18 @@ function! ccplugin#LoadCodeCommonPlugin()
     " 自动注释快捷键
     map <C-_> <plug>NERDCommenterToggle
 
-    " =========ale==========
-    "  是否airline显示
-    let g:airline#extensions#hunks#enabled=0
-    let g:airline#extensions#branch#enabled=1
-    let g:airline#extensions#ale#enabled=1
-    " 关闭自动检查
-    let g:ale_lint_on_text_changed = 1
-    " 提示符修改
-    " 设置错误符号
-    let g:ale_sign_error='✗'
-    " 设置警告符号
-    let g:ale_sign_warning='⚠'
-    " 是否在打开文件时检查
-    let g:syntastic_check_on_open=0
-    " 是否在保存文件后检查
-    let g:syntastic_check_on_wq=1
-    " 显示侧边栏
-    let g:ale_sign_column_always = 1
-    " 改变状态栏信息格式
-    let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ ok']
-    " 改变命令行信息
-    let g:ale_echo_msg_error_str = 'E'
-    let g:ale_echo_msg_warning_str = 'W'
-    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    " 打开关闭 错误提示pane
-    nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>
-
     " =====YCM=====
 
-    " 待确认
-    "let g:ycm_min_num_of_chars_for_completion = 1
-    "let g:ycm_min_num_identifier_candidate_chars = 0
-    "let g:ycm_use_ultisnips_completer = 1
-    "let g:ycm_complete_in_comments = 1
-    "let g:ycm_complete_in_strings = 1
-    "let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    "let g:ycm_seed_identifiers_with_syntax = 1
-    "let g:ycm_collect_identifiers_from_tags_files = 1
+    "let g:ycm_min_num_of_chars_for_completion=1
+    "let g:ycm_min_num_identifier_candidate_chars=0
+    let g:ycm_complete_in_comments=1
+    let g:ycm_complete_in_strings=0
+    "let g:ycm_collect_identifiers_from_comments_and_strings=1
+    let g:ycm_collect_identifiers_from_tags_files=1
     " 语法关键字补全
     let g:ycm_seed_identifiers_with_syntax = 1
     " 每次不同的vimrc之间更换需要手动指定
-    let g:ycm_confirm_extra_conf = 1
-    let g:ycm_global_ycm_extra_conf ="/Users/guanchengqi/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+    let g:ycm_global_ycm_extra_conf ="/Users/guancq/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
     
     " 关闭c语法检查
     let g:ycm_show_diagnostics_ui = 0
@@ -77,7 +46,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     "
     "ycm 智能提醒触发补全
     let g:ycm_semantic_triggers =  {
-                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
                 \ 'cs,lua,javascript': ['re!\w{1}'],
                 \ }
     " 函数跳转
@@ -89,8 +58,6 @@ function! ccplugin#LoadCodeCommonPlugin()
 
 
 " ===================== load-package =====================
-    " dense-analysis/ale
-    packadd ale
     " Valloric/YouCompleteMe  { 'do': 'python3 install.py  --ts-completer --go-completer --clang-completer' }
     packadd YouCompleteMe
     " scrooloose/nerdcommenter
@@ -113,14 +80,4 @@ function! ccplugin#LoadCodeCommonPlugin()
     " jpalardy/vim-slime
     " packadd vim-slime
 endfunction
-
-" 打开错误面板
-function! ccplugin#ToggleErrors()
-    normal ;zz
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$') | lwindow | endif
-endfunction
-
-
 
