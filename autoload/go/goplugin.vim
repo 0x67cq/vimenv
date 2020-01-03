@@ -41,34 +41,38 @@ function! go#goplugin#LoadGoPlugin()
     endif
     let g:golang_loaded = 1
     call ccplugin#LoadCodeCommonPlugin()
+" 函数跳转
+    nnoremap <leader>y :GoDef<CR>
+    " 纵向分屏跳转
+    nnoremap <leader>v :vsplit \| GoDef<CR>
+    " 横向分屏跳转
+    nnoremap <leader>s :split \| GoDef<CR>
+
 
     nnoremap <Leader>hi :call SetGolangHeader() <cr>
     nnoremap <Leader>hu :call UpdateGolangHeader() <cr>
     " =================vim-go====================
     "
-    set foldmethod=syntax
-    let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
-    "let g:go_auto_sameids = 1
     let g:go_highlight_functions = 1
     let g:go_highlight_function_calls = 1
     let g:go_highlight_function_parameters = 1
     let g:go_highlight_operators = 1
     let g:go_highlight_types = 1
-    let g:go_highlight_extra_types = 0
+    let g:go_highlight_extra_types = 1
     let g:go_highlight_fields = 1
-    let g:go_highlight_build_constraints = 0
-    let g:go_highlight_generate_tags = 0
-    let g:go_highlight_string_spellcheck = 0
+    let g:go_highlight_build_constraints = 1
+    let g:go_highlight_generate_tags = 1
+    let g:go_highlight_string_spellcheck = 1
     let g:go_highlight_format_strings = 1
     let g:go_highlight_variable_declarations = 1
     let g:go_highlight_variable_assignments = 1
     let g:go_highlight_array_whitespace_error = 1
     let g:go_highlight_chan_whitespace_error = 1
     let g:go_decls_includes = "func,type"
-
+    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
     nnoremap <leader>rr :GoRun<cr>
     nnoremap <leader>dc :GoDoc<cr>
-    nnoremap <leader>zz :GoVet<cr>
+    nnoremap <leader>e:GoVet<cr>
     nnoremap <leader>ft :GoFmt<cr>
     nnoremap <leader>tt :GoTest<cr>
 

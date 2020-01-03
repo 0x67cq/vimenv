@@ -399,9 +399,3 @@ packadd vim-fugitive
 " ==================== 语言插件手动开关 ===========================
 " golang
 call go#goplugin#LoadGoPlugin()
-
-" python 
-
-" c
-
-" fe
