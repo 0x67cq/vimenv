@@ -287,9 +287,7 @@ nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 nnoremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 nnoremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-
-
-autocmd BufNewFile *.sh exec ":call AutoSetFileHead()"
+"autocmd BufNewFile *.sh exec ":call AutoSetFileHead()"
 augroup FileIndent
     autocmd!
     autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
