@@ -6,6 +6,14 @@
 " ===================== customize-common-package =====================
 "
 " ===================== load-common-package =====================
+" packadd vimcdoc " yianwillis/vimcdoc
+" packadd fzf.vim
+" packadd vim-airline        " vim-airline/vim-airline
+" packadd vim-airline-themes " vim-airline/vim-airline-themes
+" packadd vim-easymotion " TODO 有升级内容，有空可以更新一下使用方式
+" packadd gruvbox
+" packadd vim-smooth-scroll
+" packadd vim-fugitive
 
 " 关闭vi兼容
 set nocompatible
@@ -388,5 +396,12 @@ packadd vim-smooth-scroll
 packadd vim-fugitive
 
 
-" 文件相关类型插件全部加载进来 
+" ==================== 语言插件手动开关 ===========================
+" golang
 call go#goplugin#LoadGoPlugin()
+
+" python 
+
+" c
+
+" fe

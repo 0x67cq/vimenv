@@ -1,2 +1,2 @@
-echom "ftplugin vim "
+"echom "ftplugin vim "
 call ccplugin#LoadCodeCommonPlugin()

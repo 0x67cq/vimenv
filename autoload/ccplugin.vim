@@ -3,7 +3,7 @@ function! ccplugin#LoadCodeCommonPlugin()
         return 
     endif
     let g:code_common_loaded = 1
-    echom "loading ccplugin#LoadCodeCommonPlugin"
+    "echom "loading ccplugin#LoadCodeCommonPlugin"
      
     " 开启彩虹括号
     let g:rainbow_active = 1
