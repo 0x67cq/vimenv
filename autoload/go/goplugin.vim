@@ -76,6 +76,8 @@ function! go#goplugin#LoadGoPlugin()
     nnoremap <leader>ft :GoFmt<cr>
     nnoremap <leader>tt :GoTest<cr>
 
+    inoremap .. <C-x><C-o>
+
     packadd vim-go
 endfunction
 
