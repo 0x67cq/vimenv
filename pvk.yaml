@@ -1,9 +1,0 @@
-# plugin version keeper file
-Version: v0.1
-Dependences:
-  - plugin:
-    - name: "ale"
-    - url: "https://github.com/dense-analysis/ale.git"
-    - locater: "pack/code_common/opt"
-    - version: "time+hash or tag"
-
