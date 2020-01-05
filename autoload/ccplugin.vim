@@ -1,3 +1,11 @@
+" 打开错误面板
+nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>
+function! ccplugin#ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$') | lwindow | endif
+endfunction
+
 function! ccplugin#LoadCodeCommonPlugin()
     if exists('g:code_common_loaded')
         return 
@@ -14,6 +22,39 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:NERDDefaultAlign = 'left'
     " 自动注释快捷键
     map <C-_> <plug>NERDCommenterToggle
+
+    " =========ale==========
+    "  是否airline显示
+    let g:ale_linters = {
+                \ 'python': ['flake8'], 
+                \'javascript': ['eslint'], 
+                \'c': ['clang'],
+                \'go': ['gopls'], 
+                \}
+    " golangci-lint
+    let g:airline#extensions#hunks#enabled=0
+    let g:airline#extensions#branch#enabled=1
+    let g:airline#extensions#ale#enabled=1
+    " 关闭自动检查
+    let g:ale_lint_on_text_changed = 0
+    " 提示符修改
+    " 设置错误符号
+    let g:ale_sign_error='✗'
+    " 设置警告符号
+    let g:ale_sign_warning='⚠'
+    " 是否在打开文件时检查
+    let g:syntastic_check_on_open=0
+    " 是否在保存文件后检查
+    let g:syntastic_check_on_wq=1
+    " 显示侧边栏
+    let g:ale_sign_column_always = 1
+    " 改变状态栏信息格式
+    let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ ok']
+    " 改变命令行信息
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    " 打开关闭 错误提示pane
 
     " =====YCM=====
 
@@ -55,6 +96,8 @@ function! ccplugin#LoadCodeCommonPlugin()
 
 
 " ===================== load-package =====================
+    " ale
+    packadd ale
     " Valloric/YouCompleteMe  { 'do': 'python3 install.py  --ts-completer --go-completer --clang-completer' }
     packadd YouCompleteMe
     " scrooloose/nerdcommenter
