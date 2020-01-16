@@ -1,10 +1,8 @@
 echom "ftplguin scheme"
 call ccplugin#LoadCodeCommonPlugin()
 
-packadd vim-slime
 "===========scheme repl函数=============
 "vim-slime
-let g:slime_target = "vimterminal"
 
 function SchemeStart()
     "only if the buffer is a scheme file and no terminal exists
@@ -38,6 +36,9 @@ function SchemeSetUp()
 endfunction
 
 augroup SchemeREPL
+    au!
+    let g:slime_target = "vimterminal"
+    packadd vim-slime
     "when vim is ready, start the script
     autocmd VimEnter * :call SchemeSetUp()
 augroup END

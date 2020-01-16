@@ -388,3 +388,5 @@ packadd vim-smooth-scroll
 packadd vim-fugitive
 
 call ccplugin#LoadCodeCommonPlugin()
+
+nnoremap <leader>z :!gofmt -w % <CR><CR>
