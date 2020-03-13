@@ -389,4 +389,14 @@ packadd vim-fugitive
 
 call ccplugin#LoadCodeCommonPlugin()
 
-nnoremap <leader>z :!gofmt -w % <CR><CR>
+function! GoOut()
+    if &filetype == "go"
+        exec "w"
+        silent exec "!gofmt -w %"
+        exec "redraw!"
+    else
+        exec "w"
+    endif
+endfunction
+
+nnoremap <leader>w :call GoOut()  <CR><CR>
