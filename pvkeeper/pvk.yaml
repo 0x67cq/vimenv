@@ -94,3 +94,19 @@ dependences:
      locater: "~/.vim/pack/golang/opt"
      tag: ""
      install: ""
+  - plugin:
+     name: "ale"
+     desc: ""
+     url: "https://github.com/dense-analysis/ale.git"
+     locater: "pack/code_common/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "ycm"
+     desc: "代码自动补全"
+     url: "https://github.com/ycm-core/YouCompleteMe"
+     locater: "pack/code_common/opt"
+     tag: ""
+     install: ""
+
+
