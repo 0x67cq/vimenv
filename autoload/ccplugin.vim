@@ -88,7 +88,7 @@ function! ccplugin#LoadCodeCommonPlugin()
                 \ 'lua,javascript': ['re!\w{1}'],
                 \ }
     " 函数跳转
-    nnoremap <leader>y :YcmCompleter GoTo<CR>
+    nnoremap <leader>d :YcmCompleter GoTo<CR>
     " 纵向分屏跳转
     nnoremap <leader>v :vsplit \| YcmCompleter GoTo<CR>
     " 横向分屏跳转

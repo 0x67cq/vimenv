@@ -179,7 +179,7 @@ inoremap <Down> <Nop>
 
 " 快速保存及退出
 nnoremap <Leader>q :q<CR>
-"nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 
 " 调整窗口大小快捷键
 nmap <C-W>= :resize +9<CR>
@@ -261,6 +261,12 @@ nnoremap <silent> <Leader>A :Agc<CR>
 " f键快速跳转
 map f <Plug>(easymotion-s)
 map F <Plug>(easymotion-overwin-f)
+" 关闭默认快捷键
+let g:EasyMotion_do_mapping = 0
+" 忽略大小写
+let g:EasyMotion_smartcase = 1
+" 跳转键
+let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
 " =====Airline=====
 nmap <Leader>1 <Plug>AirlineSelectTab1
@@ -351,14 +357,17 @@ let g:fzf_colors =
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
 
-" =====EasyMotion=====
-" 关闭默认快捷键
-let g:EasyMotion_do_mapping = 0
-" 忽略大小写
-let g:EasyMotion_smartcase = 1
-" 跳转键
-let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
+" tpope/vim-fugitive
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
 
 
 " ===================== load-common-package =====================
@@ -389,14 +398,8 @@ packadd vim-fugitive
 
 call ccplugin#LoadCodeCommonPlugin()
 
-function! GoOut()
-    if &filetype == "go"
-        exec "w"
-        silent exec "!gofmt -w %"
-        exec "redraw!"
-    else
-        exec "w"
-    endif
-endfunction
+nnoremap <Leader>hi :call go#goplugin#SetGolangHeader() <cr>
+nnoremap <Leader>hu :call go#goplugin#UpdateGolangHeader() <cr>
 
-nnoremap <leader>w :call GoOut() <CR>
+
+nnoremap <leader>fm :call go#goplugin#GoFormat() <CR>

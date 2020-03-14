@@ -1,5 +1,5 @@
 " ======= golang plugin loading ========
-function! SetGolangHeader()
+function! go#goplugin#SetGolangHeader()
         call setline("1", "/****************************************************")
         call append("1", "**                                                 **")
         call append("2", "**       Author:     guanchengqi                   **")
@@ -11,7 +11,7 @@ function! SetGolangHeader()
         call append("6", "**                                                 **")
         call append("7", "****************************************************/")
 endfunction
-function! UpdateGolangHeader()
+function! go#goplugin#UpdateGolangHeader()
     if &readonly
        return
     endif
@@ -34,5 +34,12 @@ function! UpdateGolangHeader()
     endif
 endfunction
 
-nnoremap <Leader>hi :call SetGolangHeader() <cr>
-nnoremap <Leader>hu :call UpdateGolangHeader() <cr>
+function! go#goplugin#GoFormat()
+    if &filetype == "go"
+        exec "w"
+        silent exec "!gofmt -w %"
+        exec "redraw!"
+    else
+        exec "w"
+    endif
+endfunction
