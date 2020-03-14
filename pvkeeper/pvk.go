@@ -30,7 +30,6 @@ func triggerLog(logBuffer *bytes.Buffer) {
 }
 
 func main() {
-
 	//develop强制必须有log
 	defer func() {
 		triggerLog(logBuffer)
@@ -51,8 +50,9 @@ func main() {
 	if err != nil {
 		triggerLog(logBuffer)
 	}
-	fmt.Println(downloads)
-	fmt.Println(updates)
+    fmt.Printf("downloads :%v\n", downloads)
+    fmt.Printf("updates :%v\n", updates)
+
 	//// TODO upgrade list
 
 	failchan := make(chan string, len(pvk.Dependences))
@@ -82,10 +82,8 @@ func main() {
 				l.Println("clear env error")
 			}
 			triggerLog(logBuffer)
-
 		}
 	}
-
 }
 
 func parseYaml(filepath string) (*Pvk, error) {
@@ -166,9 +164,14 @@ func downloadAndInstallDependence(p Plugin, fail, success chan string) {
 func updateDependence(p Plugin, fail, success chan string) {
 	// TODO update
 	// chdir
+
+    // if tag = latest checkout master the latest commit
 	// check local version whether equal yaml config verson
+
+    // git diff tag
+    // if not true
 	// run git pull
-	// checkout version
+	// checkout tag
 
 }
 
@@ -180,8 +183,9 @@ func parseLocalPack(pvk *Pvk) ([]Plugin, []Plugin, error) {
 		fmt.Println("parse v.Plugin.Locater ing...")
 		if _, err := os.Stat(v.Plugin.Locater); err == nil {
 			updates = append(updates, v.Plugin)
-		}
-		downloads = append(downloads, v.Plugin)
+        }else{
+		    downloads = append(downloads, v.Plugin)
+        }
 	}
 	return downloads, updates, nil
 	// TODO 更深的可以去做updates的版本判断
