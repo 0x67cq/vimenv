@@ -179,7 +179,7 @@ inoremap <Down> <Nop>
 
 " 快速保存及退出
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>w :w<CR>
+"nnoremap <Leader>w :w<CR>
 
 " 调整窗口大小快捷键
 nmap <C-W>= :resize +9<CR>
@@ -399,4 +399,4 @@ function! GoOut()
     endif
 endfunction
 
-nnoremap <leader>w :call GoOut()  <CR><CR>
+nnoremap <leader>w :call GoOut() <CR>
