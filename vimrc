@@ -393,6 +393,10 @@ packadd vim-smooth-scroll
 " tpope/vim-fugitive
 packadd vim-fugitive
 
+" xolox/vim-session
+packadd vim-session
+
+
 
 " ==================== 语言插件手动开关 ===========================
 " golang

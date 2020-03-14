@@ -94,3 +94,10 @@ dependences:
      locater: "~/.vim/pack/golang/opt"
      tag: ""
      install: ""
+  - plugin:
+     name: "vim-session"
+     desc: "vim session 管理"
+     url: "https://github.com/xolox/vim-session.git"
+     locater: "~/.vim/pack/common/opt"
+     tag: ""
+     install: ""
