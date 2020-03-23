@@ -38,6 +38,7 @@ function! go#goplugin#GoFormat()
     if &filetype == "go"
         exec "w"
         silent exec "!gofmt -w %"
+        silent exec "!goimports -w %"
         exec "redraw!"
     else
         exec "w"
