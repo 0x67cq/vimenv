@@ -102,7 +102,7 @@ dependences:
      tag: ""
      install: ""
   - plugin:
-     name: "ycm"
+     name: "YouCompleteMe"
      desc: "代码自动补全"
      url: "https://github.com/ycm-core/YouCompleteMe"
      locater: "~/.vim/pack/code_common/opt"
