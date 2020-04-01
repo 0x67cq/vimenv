@@ -64,8 +64,8 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:ycm_collect_identifiers_from_tags_files=1
     " 语法关键字补全
     let g:ycm_seed_identifiers_with_syntax = 1
-    " 每次不同的vimrc之间更换需要手动指定
-    let g:ycm_global_ycm_extra_conf ="/Users/guanchengqi/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+    " 每次不同的vimrc之间更换需要手动指定/Users/guanchengqi/
+    let g:ycm_global_ycm_extra_conf ="~/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
     
     " 关闭c语法检查
     let g:ycm_show_diagnostics_ui = 0
