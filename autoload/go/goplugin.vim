@@ -96,7 +96,7 @@ let g:go_decls_includes = "func,type"
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 nnoremap <leader>rr :GoRun<cr>
 nnoremap <leader>dc :GoDoc<cr>
-nnoremap <leader>e  :GoVet<cr>
+"nnoremap <leader>e  :GoVet<cr>
 
 "augroup go
 "    au!
