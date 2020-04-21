@@ -20,13 +20,13 @@ function! ccplugin#LoadCodeCommonPlugin()
     " 注释符左对齐
     let g:NERDDefaultAlign = 'left'
     " 自动注释快捷键
-    "map <C-_> <plug>NERDCommenterToggle
+    map <C-_> <plug>NERDCommenterToggle
 
     " =========ale==========
     "  是否airline显示
     let g:ale_linters = {
                 \'c': ['clang'],
-                \'go': ['gopls'], 
+                \'go': ['gopls', 'golint'], 
                 \}
     " airline 显示
     let g:airline#extensions#hunks#enabled=0
