@@ -23,12 +23,12 @@ function! ccplugin#LoadCodeCommonPlugin()
 
     " =========ale==========
     "  是否airline显示
-    "let g:ale_linters = {
-    "            \ 'python': ['flake8'], 
-    "            \'javascript': ['eslint'], 
-    "            \'c': ['clang'],
-    "            \'go': ['gopls'], 
-    "            \}
+    let g:ale_linters = {
+                \ 'python': ['flake8'], 
+                \'javascript': ['eslint'], 
+                \'c': ['clang'],
+                \'go': ['gopls', 'golint'], 
+                \}
     " golangci-lint
     let g:airline#extensions#hunks#enabled=0
     let g:airline#extensions#branch#enabled=1
