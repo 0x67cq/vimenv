@@ -407,3 +407,4 @@ call go#goplugin#LoadGoPlugin()
 nnoremap <Leader>hi :call go#goplugin#SetGolangHeader() <cr>
 nnoremap <Leader>hu :call go#goplugin#UpdateGolangHeader() <cr>
 nnoremap <leader>fm :call go#goplugin#GoFormat() <CR>
+nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>

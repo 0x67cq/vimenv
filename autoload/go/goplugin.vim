@@ -42,7 +42,7 @@ function! go#goplugin#LoadGoPlugin()
     let g:golang_loaded = 1
     call ccplugin#LoadCodeCommonPlugin()
 " 函数跳转
-    nnoremap <leader>y :GoDef<CR>
+    nnoremap <leader>d :GoDef<CR>
     " 纵向分屏跳转
     nnoremap <leader>v :vsplit \| GoDef<CR>
     " 横向分屏跳转

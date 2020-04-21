@@ -1,4 +1,3 @@
-nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>
 function! ccplugin#ToggleErrors()
     let old_last_winnr = winnr('$')
     lclose
@@ -24,12 +23,12 @@ function! ccplugin#LoadCodeCommonPlugin()
 
     " =========ale==========
     "  是否airline显示
-    let g:ale_linters = {
-                \ 'python': ['flake8'], 
-                \'javascript': ['eslint'], 
-                \'c': ['clang'],
-                \'go': ['gopls'], 
-                \}
+    "let g:ale_linters = {
+    "            \ 'python': ['flake8'], 
+    "            \'javascript': ['eslint'], 
+    "            \'c': ['clang'],
+    "            \'go': ['gopls'], 
+    "            \}
     " golangci-lint
     let g:airline#extensions#hunks#enabled=0
     let g:airline#extensions#branch#enabled=1
@@ -42,7 +41,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     " 设置警告符号
     let g:ale_sign_warning='⚠'
     " 是否在打开文件时检查
-    let g:syntastic_check_on_open=0
+    "let g:syntastic_check_on_open=0
     " 是否在保存文件后检查
     let g:syntastic_check_on_wq=1
     " 显示侧边栏
@@ -53,26 +52,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:ale_echo_msg_error_str = 'E'
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    " 打开关闭 错误提示pane
-endfunction
-
-
-function! ccplugin#LoadCodeCommonPlugin()
-    if exists('g:code_common_loaded')
-        return 
-    endif
-    let g:code_common_loaded = 1
      
-    " 开启彩虹括号
-    let g:rainbow_active = 1
-
-    " =====Nerdcommenter=====
-    " 关闭默认快捷键
-    let g:NERDCreateDefaultMappings = 0
-    " 注释符左对齐
-    let g:NERDDefaultAlign = 'left'
-    " 自动注释快捷键
-    map <C-_> <plug>NERDCommenterToggle
     let g:airline#extensions#branch#enabled=1
 
     
