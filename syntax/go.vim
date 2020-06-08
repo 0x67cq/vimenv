@@ -312,6 +312,13 @@ hi def link goBuildKeyword      PreProc
 " the usual rules.
 hi def link goPackageComment    Comment
 
+" package alias & package name
+"syn match goPackageName / [a-zA-Z0-9_]*\./
+" identifier
+"syn match goIndentifier / [a-zA-Z0-9_]* /
+"hi def link  goPackageName Keyword
+"hi def link  goIndentifier Type
+
 " :GoCoverage commands
 hi def link goCoverageNormalText Comment
 

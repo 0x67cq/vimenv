@@ -32,17 +32,15 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:airline#extensions#hunks#enabled=0
     let g:airline#extensions#branch#enabled=1
     let g:airline#extensions#ale#enabled=1
-    " 关闭文件变动时自动检查
-    let g:ale_lint_on_text_changed = 0
     " 提示符修改
     " 设置错误符号
     let g:ale_sign_error='✗'
     " 设置警告符号
     let g:ale_sign_warning='⚠'
-    " 是否在打开文件时检查
-    let g:syntastic_check_on_open=0
-    " 是否在保存文件后检查
-    let g:syntastic_check_on_wq=1
+    " 关闭文件变动时自动检查
+    let g:ale_lint_on_text_changed = 0
+    " 是否在文件修改的时候检查
+    let g:ale_completion_enabled = 0
     " 显示侧边栏
     let g:ale_sign_column_always=1
     " 改变状态栏信息格式
