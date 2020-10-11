@@ -109,6 +109,13 @@ dependences:
      tag: ""
      install: ""
   - plugin:
+     name: "python-syntax"
+     desc: "python-syntax"
+     url: "https://github.com/vim-python/python-syntax"
+     locater: "~/.vim/pack/python/opt"
+     tag: ""
+     install: ""
+  - plugin:
      name: "vim-json"
      desc: "json格式插件"
      url: "https://github.com/elzr/vim-json"
@@ -151,9 +158,24 @@ dependences:
      tag: ""
      install: ""
   - plugin:
-     name: "python-syntax"
-     desc: "python-syntax"
-     url: "https://github.com/vim-python/python-syntax"
-     locater: "~/.vim/pack/python/opt"
+     name: "vim-autoformat"
+     desc: "vim-autoformat"
+     url: "https://github.com/Chiel92/vim-autoformat"
+     locater: "~/.vim/pack/fe/opt"
      tag: ""
      install: ""
+  - plugin:
+     name: "vim-jsx"
+     desc: "vim-jsx"
+     url: "https://github.com/mxw/vim-jsx"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "html5.vim"
+     desc: "html5.vim"
+     url: "https://github.com/othree/html5.vim"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+

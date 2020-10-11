@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+    "path/filepath"
 	"io/ioutil"
 	"log"
 	"os"
@@ -206,7 +207,7 @@ func parseLocalPack(pvk *Pvk) ([]Plugin, []Plugin, error) {
 	var updates []Plugin
 	for _, v := range pvk.Dependences {
 		fmt.Println("parse v.Plugin.Locater ing...")
-		if _, err := os.Stat(v.Plugin.Locater); err == nil {
+		if _, err := os.Stat(filepath.Join(v.Plugin.Locater,v.Plugin.Name)); err == nil {
 			updates = append(updates, v.Plugin)
 		} else {
 			downloads = append(downloads, v.Plugin)
