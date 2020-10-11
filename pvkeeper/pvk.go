@@ -13,6 +13,7 @@ import (
 	"bytes"
 	//"sync"
 
+	"github.com/codeskyblue/go-sh"
 	"gopkg.in/yaml.v3"
 )
 
@@ -50,8 +51,11 @@ func main() {
 	if err != nil {
 		triggerLog(logBuffer)
 	}
-    fmt.Printf("downloads :%v\n", downloads)
-    fmt.Printf("updates :%v\n", updates)
+
+	fmt.Printf("==========================\n")
+	fmt.Printf("downloads :%v\n", downloads)
+	fmt.Printf("==========================\n")
+	fmt.Printf("updates :%v\n", updates)
 
 	//// TODO upgrade list
 
@@ -61,6 +65,11 @@ func main() {
 	for _, v := range downloads {
 		fmt.Println("start download: ", v.Name)
 		go downloadAndInstallDependence(v, failchan, successchan)
+	}
+
+	for _, v := range updates {
+		fmt.Println("start pull: ", v.Name)
+		go updateDependence(v, failchan, successchan)
 	}
 
 	for i := 0; i < len(pvk.Dependences); i++ {
@@ -162,17 +171,33 @@ func downloadAndInstallDependence(p Plugin, fail, success chan string) {
 }
 
 func updateDependence(p Plugin, fail, success chan string) {
-	// TODO update
-	// chdir
+	b, err := sh.Command("git", "pull", sh.Dir(p.Locater)).Output()
+	if err != nil {
+		fmt.Printf("%s", string(b))
+		fmt.Printf("%v", err)
+	}
+	fmt.Println(string(b))
 
-    // if tag = latest checkout master the latest commit
+    if p.Tag != "" {
+        bb, err := sh.Command("git", "checkout", sh.Dir(p.Locater)).Output()
+        if err != nil {
+            fmt.Printf("%s", string(bb))
+            fmt.Printf("%v", err)
+        }
+        fmt.Println(string(bb))
+    }
+
+	// TODO 迭代流程
+	// if tag = latest checkout master the latest commit
 	// check local version whether equal yaml config verson
 
-    // git diff tag
-    // if not true
+	// git diff tag
+	// if not true
 	// run git pull
 	// checkout tag
 
+	success <- p.Name
+	return
 }
 
 func parseLocalPack(pvk *Pvk) ([]Plugin, []Plugin, error) {
@@ -183,9 +208,9 @@ func parseLocalPack(pvk *Pvk) ([]Plugin, []Plugin, error) {
 		fmt.Println("parse v.Plugin.Locater ing...")
 		if _, err := os.Stat(v.Plugin.Locater); err == nil {
 			updates = append(updates, v.Plugin)
-        }else{
-		    downloads = append(downloads, v.Plugin)
-        }
+		} else {
+			downloads = append(downloads, v.Plugin)
+		}
 	}
 	return downloads, updates, nil
 	// TODO 更深的可以去做updates的版本判断

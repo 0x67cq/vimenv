@@ -96,7 +96,7 @@ dependences:
      install: ""
   - plugin:
      name: "ale"
-     desc: ""
+     desc: "异步语法检查"
      url: "https://github.com/dense-analysis/ale.git"
      locater: "~/.vim/pack/code_common/opt"
      tag: ""
@@ -108,5 +108,52 @@ dependences:
      locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""
-
-
+  - plugin:
+     name: "vim-json"
+     desc: "json格式插件"
+     url: "https://github.com/elzr/vim-json"
+     locater: "~/.vim/pack/code_common/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "typescript-vim"
+     desc: "ts语言插件"
+     url: "https://github.com/leafgarland/typescript-vim"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "vim-markdown"
+     desc: "markdown格式插件"
+     url: "https://github.com/plasticboy/vim-markdown"
+     locater: "~/.vim/pack/code_common/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "vim-javascript"
+     desc: "javascript语言插件"
+     url: "https://github.com/pangloss/vim-javascript"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "emmet-vim"
+     desc: "emmet-vim"
+     url: "https://github.com/mattn/emmet-vim"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "vim-css3-syntax"
+     desc: "vim-css3-syntax"
+     url: "https://github.com/hail2u/vim-css3-syntax"
+     locater: "~/.vim/pack/fe/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "python-syntax"
+     desc: "python-syntax"
+     url: "https://github.com/vim-python/python-syntax"
+     locater: "~/.vim/pack/python/opt"
+     tag: ""
+     install: ""

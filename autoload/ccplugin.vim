@@ -107,7 +107,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     " SirVer/ultisnips
     " honza/vim-snippets
     " scrooloose/nerdtree
-    " packadd nerdtree
+    packadd nerdtree
     " majutsushi/tagbar   brew install ctags gtags
     " packadd tagbar
     " tpope/vim-surround

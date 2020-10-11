@@ -1,0 +1,22 @@
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-easymotion  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  nerdcommenter  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  auto-pairs  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  typescript-vim  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  python-syntax  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-javascript  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-airline-themes  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  fzf.vim  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  ale  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-css3-syntax  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-markdown  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vimcdoc  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-fugitive  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  rainbow  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  gruvbox  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-airline  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  YouCompleteMe  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-smooth-scroll  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-json  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  emmet-vim  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:  vim-go  success
+DEBUG: /Users/guanchengqi/.vim/pvkeeper/pvk.go:80: name:    success
