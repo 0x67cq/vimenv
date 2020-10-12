@@ -27,6 +27,8 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:ale_linters = {
                 \'c': ['clang'],
                 \'go': ['gopls', 'golint'], 
+                \'python': ['autopep8'],
+                \'javascript': ['eslint'],
                 \}
     " airline 显示
     let g:airline#extensions#hunks#enabled=0
@@ -79,8 +81,11 @@ function! ccplugin#LoadCodeCommonPlugin()
     "
     "ycm 智能提醒触发补全
     let g:ycm_semantic_triggers =  {
-                \ 'c,python,go,perl': ['re!\w{2}'],
-                \ 'lua,javascript': ['re!\w{1}'],
+                \   'c,python,go,perl': ['re!\w{2}'],
+                \   'lua,javascript': ['re!\w{1}'],
+                \   'html': ['<', '"', '</', ' '],
+                \   'css': ['re!^\s{2,4}', 're!:\s+' ],
+                \   'vim': ['re![_a-za-z]+[_\w]*\.'],
                 \ }
     " 函数跳转
     nnoremap <leader>d :YcmCompleter GoTo<CR>
