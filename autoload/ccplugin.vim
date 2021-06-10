@@ -62,7 +62,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     packadd nerdcommenter
     "  https://github.com/jiangmiao/auto-pairs.git
     "packadd auto-pairs
-    packadd delimitmate
+    "packadd delimitmate
     " luochen1990/rainbow
     packadd rainbow
     "

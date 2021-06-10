@@ -77,6 +77,7 @@ augroup completion_preview_close
   endif
 augroup END
 
+let g:go_gopls_enabled = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
@@ -122,6 +123,13 @@ nnoremap <leader>dc :GoDoc<cr>
 "augroup END
 
 inoremap .. <C-x><C-o>
+
+"=====go-def======
+"let g:go_def_mode = 'gopls'
+let g:go_def_mode = 'guru'
+"let g:go_info_mode = 'gopls'
+let g:go_info_mode = 'guru'
+let g:godef_split = 1
 
 packadd vim-go
 
