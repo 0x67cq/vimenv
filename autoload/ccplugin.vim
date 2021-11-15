@@ -95,6 +95,9 @@ function! ccplugin#LoadCodeCommonPlugin()
     nnoremap <leader>s :split \| YcmCompleter GoTo<CR>
 
 
+" ================Tagbar============================
+    nnoremap <leader>t :Tagbar<CR>
+
 " ===================== load-package =====================
     " ale
     packadd ale
@@ -112,9 +115,10 @@ function! ccplugin#LoadCodeCommonPlugin()
     " SirVer/ultisnips
     " honza/vim-snippets
     " scrooloose/nerdtree
-    packadd nerdtree
-    " majutsushi/tagbar   brew install ctags gtags
-    " packadd tagbar
+    " packadd nerdtree
+    " majutsushi/tagbar   brew install ctags |apt install  exuberant-ctags | go get -u github.com/jstemmer/gotags
+    " exuberant-ctags
+    packadd tagbar
     " tpope/vim-surround
     " packadd tagbar
     " jpalardy/vim-slime

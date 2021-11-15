@@ -60,6 +60,13 @@ dependences:
      tag: ""
      install: ""
   - plugin:
+     name: "far.vim"
+     desc: "多文件批量搜索替换"
+     url: "https://github.com/brooth/far.vim"
+     locater: "~/.vim/pack/common/opt"
+     tag: ""
+     install: ""
+ - plugin:
      name: "vim-fugitive"
      desc: "git状态栏插件"
      url: "https://github.com/tpope/vim-fugitive"
@@ -105,6 +112,13 @@ dependences:
      name: "YouCompleteMe"
      desc: "代码自动补全"
      url: "https://github.com/ycm-core/YouCompleteMe"
+     locater: "~/.vim/pack/code_common/opt"
+     tag: ""
+     install: ""
+  - plugin:
+     name: "tagbar"
+     desc: "自定义描述符号展示"
+     url: "https://github.com/preservim/tagbar"
      locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""

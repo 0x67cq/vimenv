@@ -17,6 +17,7 @@ filetype plugin indent on
 " ===================== customize-vim-opt =====================
 " =====Mac剪贴板共享=====
 set clipboard=unnamed
+set clipboard=unnamedplus
 
 " =====文件=====
 " 设置编码格式
@@ -257,6 +258,13 @@ nnoremap <silent> <Leader>a :Ag<CR>
 " 光标所在词模糊搜索
 nnoremap <silent> <Leader>A :Agc<CR>
 
+" =====FAR=====
+" 多文件搜索&替换
+nnoremap <silent> <Leader>r :Farr<CR>
+" 多文件搜索
+nnoremap <silent> <Leader>ff :Farf<CR>
+
+
 " =====EasyMotion=====
 " f键快速跳转
 map f <Plug>(easymotion-s)
@@ -335,7 +343,7 @@ command! -bang -nargs=* Ag
 " fzf搜索结果分屏展示
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
+            \ 'ctrl-b': 'split',
             \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
@@ -356,6 +364,14 @@ let g:fzf_colors =
             \ 'marker':  ['fg', 'Keyword'],
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
+
+
+" =====FAR=====
+set lazyredraw            " improve scrolling performance when navigating through large results
+set regexpengine=1        " use old regexp engine
+set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
+
+
 
 
 " tpope/vim-fugitive
@@ -379,6 +395,9 @@ packadd vimcdoc " yianwillis/vimcdoc
 " 位移效果 -> 模糊搜索 
 set rtp+=~/.fzf
 packadd fzf.vim
+
+" 多文件 批量搜索替换
+packadd far.vim
 
 " airline  
 packadd vim-airline        " vim-airline/vim-airline
