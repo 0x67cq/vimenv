@@ -94,6 +94,8 @@ function! ccplugin#LoadCodeCommonPlugin()
     " 横向分屏跳转
     nnoremap <leader>s :split \| YcmCompleter GoTo<CR>
 
+    nnoremap <leader>i :split \| YcmCompleter GoToImplementation<CR>
+
 
 " ================Tagbar============================
     nnoremap <leader>t :Tagbar<CR>

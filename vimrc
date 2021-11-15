@@ -17,7 +17,7 @@ filetype plugin indent on
 " ===================== customize-vim-opt =====================
 " =====Mac剪贴板共享=====
 set clipboard=unnamed
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " =====文件=====
 " 设置编码格式
@@ -333,11 +333,14 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 
 " =====FZF=====
 command! -bang -nargs=* Agc
-            \ call fzf#vim#ag(expand('<cword>'))
+            \ call fzf#vim#ag(expand('<cword>'),
+            \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+            \                         : fzf#vim#with_preview('right:90%:hidden', '?'),
+            \                 <bang>0)
 command! -bang -nargs=* Ag
             \ call fzf#vim#ag(<q-args>,
             \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-            \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \                         : fzf#vim#with_preview('right:90%:hidden', '?'),
             \                 <bang>0)
 
 " fzf搜索结果分屏展示
@@ -347,6 +350,7 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
+"let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 " Customize fzf colors to match your color scheme
@@ -393,7 +397,7 @@ packadd vimcdoc " yianwillis/vimcdoc
 
 "set rtp+=/usr/local/powerline/powerline/bindings/vim
 " 位移效果 -> 模糊搜索 
-set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 packadd fzf.vim
 
 " 多文件 批量搜索替换
