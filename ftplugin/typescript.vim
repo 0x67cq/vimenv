@@ -1,1 +1,0 @@
-packadd typescript-vim

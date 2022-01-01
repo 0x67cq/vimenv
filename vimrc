@@ -376,8 +376,6 @@ set regexpengine=1        " use old regexp engine
 set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
 
 
-
-
 " tpope/vim-fugitive
 "" Git
 noremap <Leader>ga :Gwrite<CR>
@@ -421,7 +419,3 @@ packadd vim-fugitive
 
 call ccplugin#LoadCodeCommonPlugin()
 
-nnoremap <Leader>hi :call go#goplugin#SetGolangHeader() <cr>
-nnoremap <Leader>hu :call go#goplugin#UpdateGolangHeader() <cr>
-nnoremap <leader>fm :call go#goplugin#GoFormat() <CR>
-nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>

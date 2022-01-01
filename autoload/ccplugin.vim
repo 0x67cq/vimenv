@@ -26,7 +26,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     "  是否airline显示
     let g:ale_linters = {
                 \'c': ['clang'],
-                \'go': ['gopls', 'golint'], 
+                \'go': ['gopls'], 
                 \'python': ['autopep8'],
                 \'javascript': ['eslint'],
                 \}
@@ -52,49 +52,117 @@ function! ccplugin#LoadCodeCommonPlugin()
     let g:ale_echo_msg_warning_str = 'W'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     " 打开关闭 错误提示pane
-
-    " =====YCM=====
-
-    let g:ycm_complete_in_comments=1
-    let g:ycm_complete_in_strings=0
-    "let g:ycm_collect_identifiers_from_comments_and_strings=1
-    let g:ycm_collect_identifiers_from_tags_files=1
-    " 语法关键字补全
-    let g:ycm_seed_identifiers_with_syntax = 1
-    " 每次不同的vimrc之间更换需要手动指定/Users/guanchengqi/
-    let g:ycm_global_ycm_extra_conf ="~/.vim/pack/code_common/opt/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
-    
-    " 关闭c语法检查
-    let g:ycm_show_diagnostics_ui = 0
-    let g:ycm_key_invoke_completion = '<C-z>'
-    let g:ycm_min_num_identifier_candidate_chars = 2
-    " c头文件识别
-    let g:c_syntax_for_h = 1
-    " 智能补全
-    "let g:ycm_semantic_triggers =  {
-    "            \   'c': ['->', '.', 're![a-zA-Z_][a-zA-Z_0-9]{2,}'],
-    "            \   'python,javascript,go': ['.', 're![a-zA-Z_][a-zA-Z_0-9]{2,}'],
-    "            \   'html': ['<', '"', '</', ' '],
-    "            \   'vim': ['re![_a-za-z]+[_\w]*\.'],
-    "            \   'css': ['re!^\s{2,4}', 're!:\s+' ],
-    "            \ }
+    nnoremap <Leader>e :call ccplugin#ToggleErrors()<cr>
     "
-    "ycm 智能提醒触发补全
-    let g:ycm_semantic_triggers =  {
-                \   'c,python,go,perl': ['re!\w{2}'],
-                \   'lua,javascript': ['re!\w{1}'],
-                \   'html': ['<', '"', '</', ' '],
-                \   'css': ['re!^\s{2,4}', 're!:\s+' ],
-                \   'vim': ['re![_a-za-z]+[_\w]*\.'],
-                \ }
-    " 函数跳转
-    nnoremap <leader>d :YcmCompleter GoTo<CR>
-    " 纵向分屏跳转
-    nnoremap <leader>v :vsplit \| YcmCompleter GoTo<CR>
-    " 横向分屏跳转
-    nnoremap <leader>s :split \| YcmCompleter GoTo<CR>
+    "
 
-    nnoremap <leader>i :split \| YcmCompleter GoToImplementation<CR>
+    " vim-lsp
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+    "" 函数跳转
+    nnoremap <leader>d :LspDefinition<CR>
+    " 纵向分屏跳转
+    nnoremap <leader>v :vsplit \| LspDefinition<CR>
+    " 横向分屏跳转
+    nnoremap <leader>s :split \| LspDefinition<CR>
+    
+    nnoremap <leader>i :split \| LspImplementation<CR>
+
+    " pip3 install python-language-server
+    if executable('pyls')
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->['pyls']},
+            \ 'whitelist': ['python'],
+            \ })
+    endif
+    " npm i -g bash-language-server
+    if executable('bash-language-server')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'bash-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+            \ 'whitelist': ['sh', 'bash'],
+            \ })
+    endif
+    " OSX xcrun --find clangd
+    if executable('/Library/Developer/CommandLineTools/usr/bin/clangd')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['/Library/Developer/CommandLineTools/usr/bin/clangd']},
+            \ 'whitelist': ['c'],
+            \ })
+    endif
+    " GO111MODULE=on go install -v gopls
+    if executable('gopls')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'gopls',
+            \ 'cmd': {server_info->['gopls']},
+            \ 'whitelist': ['go'],
+            \ })
+    endif
+    " npm i -g vscode-html-languageserver-bin
+    " npm i -g vscode-langservers-extracted
+    " hrsh7th/vim-vsnip
+    " hrsh7th/vim-vsnip-integ
+    if executable('html-languageserver')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'html-languageserver',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
+            \ 'whitelist': ['css', 'js', 'html', 'ts'],
+            \ })
+    endif
+    " npm i -g vscode-css-languageserver-bin
+    if executable('css-languageserver')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'css-languageserver',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+            \ 'whitelist': ['css', 'js', 'html', 'ts'],
+            \ })
+    endif
+    " npm i -g typescript-language-server
+    if executable('typescript-language-server')
+    	autocmd User lsp_setup call lsp#register_server({
+    		\ 'name': 'typescript-language-server',
+    		\ 'cmd': {server_info->[
+    			\ &shell,
+    			\ &shellcmdflag,
+    			\ 'typescript-language-server --stdio',
+    		\ ]},
+    		\ 'root_uri': {server_info->lsp#utils#path_to_uri(
+    			\ lsp#utils#find_nearest_parent_file_directory(
+    				\ lsp#utils#get_buffer_path(),
+    				\ ['tsconfig.json', 'package.json']
+    			\ )
+    		\ )},
+    		\ 'whitelist': ['javascript', 'typescript', 'typescriptreact'],
+    	\ })
+    endif
+    " npm i -g dockerfile-language-server-nodejs
+    if executable('docker-langserver')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'docker-langserver',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+            \ 'whitelist': ['dockerfile'],
+            \ })
+    endif
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+        \ 'name': 'file',
+        \ 'whitelist': ['*'],
+        \ 'priority': 10,
+        \ 'completor': function('asyncomplete#sources#file#completor')
+        \ }))
+
+    " npm i -g dockerfile-language-server-nodejs
+    " npm i -g typescript-language-server
+    " npm i -g vscode-css-languageserver-bin
+    " npm i -g vscode-html-languageserver-bin
+    " GO111MODULE=on go install -v gopls
+    " npm i -g bash-language-server
+    " pip3 install python-language-server
+    " OSX xcrun --find clangd
+
 
 
 " ================Tagbar============================
@@ -104,7 +172,7 @@ function! ccplugin#LoadCodeCommonPlugin()
     " ale
     packadd ale
     " Valloric/YouCompleteMe  { 'do': 'python3 install.py  --ts-completer --go-completer --clang-completer' }
-    packadd YouCompleteMe
+    "packadd YouCompleteMe
     " scrooloose/nerdcommenter
     packadd nerdcommenter
     "  https://github.com/jiangmiao/auto-pairs.git
@@ -125,5 +193,15 @@ function! ccplugin#LoadCodeCommonPlugin()
     " packadd tagbar
     " jpalardy/vim-slime
     " packadd vim-slime
+    "
+    " LSP 
+    packadd prabirshrestha/asyncomplete.vim
+    packadd prabirshrestha/vim-lsp
+    packadd prabirshrestha/asyncomplete-lsp.vim
+    packadd prabirshrestha/asyncomplete-file.vim
+
+    packadd hrsh7th/vim-vsnip-integ
+    packadd hrsh7th/vim-vsnip
+
 endfunction
 
