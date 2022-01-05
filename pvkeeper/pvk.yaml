@@ -66,7 +66,7 @@ dependences:
      locater: "~/.vim/pack/common/opt"
      tag: ""
      install: ""
- - plugin:
+  - plugin:
      name: "vim-fugitive"
      desc: "git状态栏插件"
      url: "https://github.com/tpope/vim-fugitive"
@@ -107,7 +107,7 @@ dependences:
      name: "prabirshrestha/asyncomplete.vim"
      desc: "自动补全插件"
      url: "https://github.com/prabirshrestha/asyncomplete.vim"
-     locater: "~/.vim/pack/code_common/opt/prabirshrestha"
+     locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""
 
@@ -115,7 +115,7 @@ dependences:
      name: "prabirshrestha/vim-lsp"
      desc: "lsp client"
      url: "https://github.com/prabirshrestha/vim-lsp"
-     locater: "~/.vim/pack/code_common/opt/prabirshrestha"
+     locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""
 
@@ -123,7 +123,7 @@ dependences:
      name: "prabirshrestha/asyncomplete-lsp.vim"
      desc: "自动补全&lsp client中间通信"
      url: "https://github.com/prabirshrestha/asyncomplete-lsp.vim"
-     locater: "~/.vim/pack/code_common/opt/prabirshrestha"
+     locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""
 
@@ -131,7 +131,7 @@ dependences:
      name: "prabirshrestha/asyncomplete-lsp.vim"
      desc: "路径自动补全配套插件"
      url: "https://github.com/prabirshrestha/asyncomplete-file.vim.git"
-     locater: "~/.vim/pack/code_common/opt/prabirshrestha"
+     locater: "~/.vim/pack/code_common/opt"
      tag: ""
      install: ""
 

@@ -195,13 +195,13 @@ function! ccplugin#LoadCodeCommonPlugin()
     " packadd vim-slime
     "
     " LSP 
-    packadd prabirshrestha/asyncomplete.vim
-    packadd prabirshrestha/vim-lsp
-    packadd prabirshrestha/asyncomplete-lsp.vim
-    packadd prabirshrestha/asyncomplete-file.vim
+    packadd asyncomplete.vim
+    packadd vim-lsp
+    packadd asyncomplete-lsp.vim
+    packadd asyncomplete-file.vim
 
-    packadd hrsh7th/vim-vsnip-integ
-    packadd hrsh7th/vim-vsnip
+    packadd vim-vsnip-integ
+    packadd vim-vsnip
 
 endfunction
 
