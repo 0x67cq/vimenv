@@ -87,10 +87,23 @@ function! ccplugin#LoadCodeCommonPlugin()
             \ })
     endif
     " OSX xcrun --find clangd
+    " linux/debian add to /etc/apt/sources.list
+    " deb http://apt.llvm.org/buster/ llvm-toolchain-buster main 
+    " deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster main 
+    " deb http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main 
+    " deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main 
+    " deb http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main 
+    " deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
+    "
+    " wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+    " sudo apt-get update
+    " sudo apt-get install clangd
     if executable('/Library/Developer/CommandLineTools/usr/bin/clangd')
+    " if executable('clangd')
       au User lsp_setup call lsp#register_server({
             \ 'name': 'clangd',
             \ 'cmd': {server_info->['/Library/Developer/CommandLineTools/usr/bin/clangd']},
+            " \ 'cmd': {server_info->['clangd']},
             \ 'whitelist': ['c'],
             \ })
     endif
